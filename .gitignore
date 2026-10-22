@@ -45,3 +45,8 @@ scratch/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Upstream repositories & screenshots
+upstream/
+**/upstream/
+*.png
