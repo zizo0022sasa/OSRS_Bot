@@ -61,14 +61,27 @@
 1. سبب التعثر الدقيق.
 2. الإجراء التصحيحي الواجب تنفيذه في اللعبة.
 3. نسبة ثقتك في الحل.
+
+⚠️ قانون حظر إحداثيات البكسل (Zero Pixel-Click Law):
+يُحظر منعاً باتاً إخراج أوامر نقر بإحداثيات شاشة خام Click(X, Y)؛ لاحتمال هلوسة النماذج البصرية بنسبة 30-80 بكسل مما قد يرمي أدوات ثمينة أو يهاجم وحوشاً خطرة. يجب أن يقع اختيارك حصراً ضمن قائمة الأوامر الرمزية المعيارية الآتية:
+
 أجب بصيغة JSON حصرية:
 {
   "root_cause": "...",
-  "action_type": "ROTATE_CAMERA | CLICK_DIALOG_OPTION | INTERACT_OBJECT | STEP_BACK",
-  "action_params": {"degrees": 180, "option_index": 1, "object_id": 20793},
+  "action_type": "ROTATE_CAMERA | INTERACT_GAME_OBJECT | SELECT_DIALOGUE_OPTION | DISMISS_NPC_EVENT | WALK_RELATIVE_TILE | ESCALATE_TO_BOLLA",
+  "action_params": {"degrees": 180, "option_index": 1, "object_id": 20793, "dx": 0, "dy": -1},
   "confidence": 0.98
 }
 ```
+
+* **قائمة الأوامر الرمزية المعيارية (Symbolic API Action Menu):**
+  * ينفذ المحرك الأوامر عبر واجهة برمجة اللعبة المباشرة (`Microbot Game API`) بنسبة دقة 100% دون أي اعتماد على موضع مؤشر الماوس:
+    1. `ROTATE_CAMERA(yaw, pitch)`: تدوير وتعديل زاوية الكاميرا لكشف الأبواب والأشجار المحجوبة.
+    2. `INTERACT_GAME_OBJECT(object_name_or_id, action_name)`: تفاعل مباشر مع الكائن الحقيقي بالـ ID (مثل Door ID `20793` ◄ `Open`).
+    3. `SELECT_DIALOGUE_OPTION(option_index_or_text)`: اختيار نص الحوار المناسب بالرقم أو النص لتخطي المحادثات.
+    4. `DISMISS_NPC_EVENT(npc_name)`: صرف طرائد الأحداث العشوائية (Genie, Mysterious Old Man).
+    5. `WALK_RELATIVE_TILE(dx, dy)`: الرجوع خطوة للخلف أو الجانب لإعادة التموضع.
+    6. `ESCALATE_TO_BOLLA()`: تجميد الحساب وإرسال كبسولة الاستغاثة للتليجرام لو كان العائق مجهولاً تماماً.
 
 ---
 
